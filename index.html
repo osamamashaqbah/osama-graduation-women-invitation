@@ -95,6 +95,7 @@ function playMusic(){
   if(audio.readyState>=1)startPlayback();
   else audio.addEventListener('loadedmetadata',startPlayback,{once:true});
 }
+function openInvitation(){playMusic();document.querySelector('#invitation')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
 document.querySelector('[data-dance-toggle]')?.addEventListener('click',e=>{const paused=document.body.classList.toggle('dance-paused');e.currentTarget.setAttribute('aria-pressed',String(paused));e.currentTarget.textContent=paused?'تشغيل الحركة':'إيقاف الحركة';});
 document.querySelector('[data-video-toggle]')?.addEventListener('click',e=>{const video=document.querySelector('.samer-intro-video');if(!video)return;const paused=!video.paused;if(paused)video.pause();else video.play();e.currentTarget.setAttribute('aria-pressed',String(paused));e.currentTarget.textContent=paused?'تشغيل الحركة':'إيقاف الحركة';});
 window.addEventListener('load',playMusic,{once:true});
